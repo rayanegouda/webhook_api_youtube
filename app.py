@@ -25,7 +25,6 @@ def redirect_to_song():
     return redirect(YOUTUBE_URL, code=302)
 
 @app.route('/go')
-@app.route('/go')
 def go():
     return render_template_string("""
     <!DOCTYPE html>
@@ -73,6 +72,7 @@ def go():
     </body>
     </html>
     """, url=YOUTUBE_URL)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

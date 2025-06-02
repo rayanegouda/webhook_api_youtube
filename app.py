@@ -26,7 +26,53 @@ def redirect_to_song():
 
 @app.route('/go')
 def go():
-    return redirect(YOUTUBE_URL, code=302)
+    return render_template_string("""
+    <html>
+    <head>
+        <title>VMascourse - Préparation de l'expérience</title>
+        <meta charset="UTF-8">
+        <style>
+            body {
+                background-color: #0f0f0f;
+                color: #ffffff;
+                font-family: Arial, sans-serif;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                text-align: center;
+            }
+            .loader {
+                border: 8px solid #f3f3f3;
+                border-top: 8px solid #3498db;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                animation: spin 1s linear infinite;
+                margin-top: 20px;
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+        <script>
+            setTimeout(function() {
+                window.location.href = "{{ url }}";
+            }, 120000); // 2 minutes en ms
+        </script>
+    </head>
+    <body>
+        <h1>Préparation de votre mission...</h1>
+        <p>Merci de patienter quelques instants pendant que nous lançons l’environnement.</p>
+        <div class="loader"></div>
+        <p style="margin-top: 40px; font-size: 0.9em;">Redirection automatique dans 2 minutes.</p>
+    </body>
+    </html>
+    """, url=YOUTUBE_URL)
+
 
 
 if __name__ == '__main__':

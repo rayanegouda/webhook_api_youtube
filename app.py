@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-YOUTUBE_URL = "https://youtu.be/7nSr2P6blYM?si=Lxte8Q4MKw0Zea5-"
+YOUTUBE_URL = "youtu.be/7nSr2P6blYM?si=Lxte8Q4MKw0Zea5-"
 
 @app.route('/')
 def index():
